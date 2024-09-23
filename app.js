@@ -1,6 +1,9 @@
 let balance = document.getElementById("donation_Coin")
 const date = new Date()
-
+const modal = document.getElementById('modal')
+let modalAmount = document.getElementById('modal_amount')
+const closeModalBtn = document.getElementById('close_modal')
+console.log(modal, modalAmount, closeModalBtn);
 
 
 function donationFunction(inpId, showId, btnId) {
@@ -25,7 +28,7 @@ function donationFunction(inpId, showId, btnId) {
                 balance.innerText = currentBalance
 
 
-
+                // History Item set 
 
                 if (inpId === 'noakhali_donation_inp_field') {
                     let childItem = document.createElement('li')
@@ -44,8 +47,17 @@ function donationFunction(inpId, showId, btnId) {
 
                 }
 
+                // Modal Box info set
+                modal.classList.add('block')
+                modal.classList.remove('hidden')
+                modalAmount.innerText = donateAmount.value
+                closeModalBtn.addEventListener('click', function () {
+                    modal.classList.remove('block')
+                    modal.classList.add('hidden')
+                })
 
                 donateAmount.value = ''
+
             } else {
                 alert('You have not sufficient balance')
             }
@@ -96,7 +108,7 @@ historyBtn.addEventListener('click', () => {
 // Blog Button Redirect
 const blog = document.getElementById('blog_button')
 
-blog.addEventListener('click', function(e){
+blog.addEventListener('click', function (e) {
     e.preventDefault()
     window.location.href = "./blog.html";
 })
